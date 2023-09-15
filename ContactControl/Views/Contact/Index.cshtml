@@ -1,0 +1,80 @@
+﻿@{
+    ViewData["Title"] = "Contact list";
+}
+
+<div class="text-center">
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <a class="btn btn-primary" role="button" asp-controller="Contact" asp-action="Create">Add new contact</a>
+    </div>
+    <br />
+
+    <h1 class="display-4">Contact List</h1>
+
+
+    <table class="table">
+
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+
+
+
+        <tbody>
+
+            <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto@hotmail.com</td>
+                <td>987 654 321</td>
+
+                <td>
+                    <div class="btn-group" role="group">
+                        <a role="button" class="btn btn-primary">Edit</a>
+                        <a role="button" class="btn btn-danger">Delete</a>
+
+                    </div>
+                </td>
+
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton@gmail.com</td>
+                <td>789 456 123</td>
+
+                <td>
+                    <div class="btn-group" role="group">
+                        <a role="button" class="btn btn-primary">Edit</a>
+                        <a role="button" class="btn btn-danger">Delete</a>
+
+                    </div>
+                </td>
+
+            </tr>
+
+            <tr>
+                <th scope="row">3</th>
+                <td>Victor</td>
+                <td>Victor@gmail.com</td>
+                <td>581 453 123</td>
+
+                <td>
+                    <div class="btn-group" role="group">
+                        <a role="button" class="btn btn-primary">Edit</a>
+                        <a role="button" class="btn btn-danger">Delete</a>
+
+                    </div>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+
