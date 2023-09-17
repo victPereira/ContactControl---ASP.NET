@@ -19,9 +19,15 @@ namespace ContactControl.Controllers
             return View();
         }
 
+        public IActionResult DeleteConfirmation()
+        {
+            return View();
+        }
+
         public IActionResult Delete()
         {
             return View();
         }
+
     }
 }
