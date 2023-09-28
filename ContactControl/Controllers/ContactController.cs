@@ -1,12 +1,24 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ContactControl.Models;
+using ContactControl.Repository;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ContactControl.Controllers
 {
     public class ContactController : Controller
     {
+
+        private readonly IRepositoryContact _repositoryContact;
+
+        public ContactController(IRepositoryContact repositoryContact)
+        {
+            _repositoryContact = repositoryContact;
+        }
+
+        //METODS GET - RECEBE AS INFO
         public IActionResult Index()
         {
-            return View();
+           List<ContactModel> contacts = _repositoryContact.GetAll();
+            return View(contacts);
         }
 
         public IActionResult Create()
@@ -14,9 +26,10 @@ namespace ContactControl.Controllers
             return View();
         }
 
-        public IActionResult Edit()
+        public IActionResult Edit(int id) 
         {
-            return View();
+           ContactModel contact = _repositoryContact.ListID(id);
+            return View(contact);
         }
 
         public IActionResult DeleteConfirmation()
@@ -28,6 +41,25 @@ namespace ContactControl.Controllers
         {
             return View();
         }
+
+        // METODOS POST - ENVIANDO INFO
+
+        [HttpPost]
+        public IActionResult Create (ContactModel contact)
+        {
+            _repositoryContact.Add(contact);
+            return RedirectToAction("Index");
+        }
+
+
+        // METODOS POST - EDITANDO INFO
+        [HttpPost]
+        public IActionResult Update(ContactModel contact)
+        {
+            _repositoryContact.Add(contact);
+            return RedirectToAction("Index");
+        }
+
 
     }
 }

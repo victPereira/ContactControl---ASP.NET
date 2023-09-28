@@ -1,7 +1,23 @@
-var builder = WebApplication.CreateBuilder(args);
+using ContactControl.Data;
+using ContactControl.Repository;
+using Microsoft.EntityFrameworkCore;
 
-// Add services to the container.
+
+var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
+
+
+// Configuracao do banco de dados / appsettings.json / BaseContext.cs
+builder.Services.AddDbContext<BaseContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+
+
+
+//Injecao de dependencia
+builder.Services.AddScoped<IRepositoryContact, RepositoryContact>();
+
 
 var app = builder.Build();
 

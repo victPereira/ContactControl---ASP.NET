@@ -1,4 +1,6 @@
-﻿@{
+﻿@model List<ContactModel>
+
+@{
     ViewData["Title"] = "Contact list";
 }
 
@@ -28,53 +30,32 @@
 
         <tbody>
 
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto@hotmail.com</td>
-                <td>987 654 321</td>
+            @if(Model != null && Model.Any())
+            {
+                foreach (ContactModel contact in Model)
+                {
+                    <tr>
+                        <th scope="row">@contact.Id</th>
+                        <td>@contact.Name</td>
+                        <td>@contact.Email</td>
+                        <td>@contact.Phone</td>
 
-                <td>
-                    <div class="btn-group" role="group">
-                        <a role="button" class="btn btn-primary" asp-controller="Contact" asp-action="Edit">Edit</a>
-                        <a role="button" class="btn btn-danger" asp-controller="Contact" asp-action="DeleteConfirmation">Delete</a>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a role="button" class="btn btn-primary" asp-route-id="@contact.Id" asp-controller="Contact" asp-action="Edit">Edit</a>
+                                <a role="button" class="btn btn-danger" asp-route-id="@contact.Id"  asp-controller="Contact" asp-action="DeleteConfirmation">Delete</a>
 
-                    </div>
-                </td>
+                            </div>
+                        </td>
 
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton@gmail.com</td>
-                <td>789 456 123</td>
+                    </tr>
+                }
+            }
+            
 
-                <td>
-                    <div class="btn-group" role="group">
-                        <a role="button" class="btn btn-primary" asp-controller="Contact" asp-action="Edit">Edit</a>
-                        <a role="button" class="btn btn-danger" asp-controller="Contact" asp-action="DeleteConfirmation">Delete</a>
-
-                    </div>
-                </td>
-
-            </tr>
-
-            <tr>
-                <th scope="row">3</th>
-                <td>Victor</td>
-                <td>Victor@gmail.com</td>
-                <td>581 453 123</td>
-
-                <td>
-                    <div class="btn-group" role="group">
-                        <a role="button" class="btn btn-primary" asp-controller="Contact" asp-action="Edit" >Edit</a>
-                        <a role="button" class="btn btn-danger" asp-controller="Contact" asp-action="DeleteConfirmation">Delete</a>
-
-                    </div>
-                </td>
-
-            </tr>
         </tbody>
+
     </table>
+
 </div>
 
